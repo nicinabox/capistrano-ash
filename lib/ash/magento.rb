@@ -49,7 +49,7 @@ configuration.load do
     desc "[internal] Touches up the released code. This is called by update_code after the basic deploy finishes."
     task :finalize_update, :roles => :web, :except => { :no_release => true } do
       # synchronize media directory with shared data
-      a "rsync -rltDvzog #{latest_release}/media/ #{shared_path}/media/"
+      run "rsync -rltDvzog #{latest_release}/media/ #{shared_path}/media/"
       run "chmod -R 777 #{shared_path}/media/"
 
       # remove directories that will be shared
