@@ -50,7 +50,7 @@ configuration.load do
     task :finalize_update, :roles => :web, :except => { :no_release => true } do
       # synchronize media directory with shared data
       run "rsync -rltDvzog #{latest_release}/media/ #{shared_path}/media/"
-      run "chmod -R 777 #{shared_path}/media/"
+      # run "chmod -R 777 #{shared_path}/media/"
 
       # remove directories that will be shared
       run "rm -Rf #{latest_release}/includes"
